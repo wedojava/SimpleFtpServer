@@ -1,19 +1,31 @@
-# ScreenShotByProcessName
-ScreenShot implement by C/C++ via VC 6.0
+# SimpleFtpServer
+Implement by Python3.7
 
-It will capture screen while target process exist.
+A very simple and crude FTP server. where it is ,where the folder was shared by ftp!
 
-It will get all process names every 2 second.
+By default, username is `user`, password is `123456`, port is `21`
 
-In default, only one param follow the command, it can capture 200 pictures then exit.
+You can change it while running.
 
-While capture successfuly, at the same path a folder named `ScrS` can be create and some pictures saved.
+## Preparation
 
-Pictures' name is the keyword/param you set,like Chrome1.jpg, Chrome2.jpg...
+You need to install the package below:
 
-## Why VC6.0
+    pip install pyftpdlib
 
-Also, I consider windows XP SP3 can run it well, sometimes, program via VC6.0 can achive my goal.
+### Optional
+
+If you wanna package it into one exe file, if your option system is win10, you maybe need this [Q&A from stackoverflow](https://stackoverflow.com/questions/47155474/create-an-exe-compatible-with-all-versions-of-windows-64-bit-and-32-bit-even-if) and [Universal CRT not found](https://github.com/pyinstaller/pyinstaller/issues/1566)
+also, you can get it by download a portable zip and set it in your pyinstaller `.spec` file like this:
+
+```
+...
+a = Analysis(['ftp_server.py'],
+             pathex=['<your ucrt root path>\\ucrt\\DLLs\\x86'],
+             binaries=[],
+             ...
+```
+
 
 ## Passed test platform
 
@@ -23,25 +35,4 @@ Also, I consider windows XP SP3 can run it well, sometimes, program via VC6.0 ca
 
 ## Usage
 
-    ScreenShotByProcessName.exe <keyword> [<capture number>]
-
-- `<keyword>`: Your target process name's keyword, Case Sensitively.
-- `[<capture number>]`: optional param, how many pictures you want capture, default setting is 200
-
-eg:
-
-- Capture 10 pictures if there is/are process name(s) cantain "Chrome"
-```
-ScreenShotByProcessName.exe Chrome 10
-```
-
-- Capture pictures 200
-```
-ScreenShotByProcessName.exe Chrome
-```
-
-## Notice
-
-It can not return any error at all.
-
-If want to catch the error, just debug source.
+Oh no descritions, just run it is ok.
